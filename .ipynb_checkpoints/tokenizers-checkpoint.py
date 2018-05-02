@@ -55,9 +55,6 @@ class TwitterTokenizer(BaseTokenizer):
 
 
 class SoyNLPTokenizer(BaseTokenizer):
-    """
-    Tokenize text using MaxScoreTokenizer of 
-    """
     def __init__(self):
         self.tokenizer = None
         self.scores = list()

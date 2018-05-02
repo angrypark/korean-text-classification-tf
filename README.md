@@ -1,5 +1,3 @@
 # korean-text-classification-tf
 ---
-머신러닝을 공부하면서 저만의 framework를 만들고 거기에 다양한 모델을 구현해보고 싶어서 만들었습니다.
-
-시작은 다른 분들의 코드를 많이 참고해야겠지만, 좀더 익숙해지면 직접 구현도 해보고 하겠습니다.
+To improve my programming skills, I wanted to make my own framework and implement various models in it. This is my first framework, whose goal is korean text classification using tensorflow. Thanks for [@dreamgonfly], [@skdy] for giving advice and base line codes. 
