@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/.idea/cnn-text-classification-tf-master.iml" filepath="$PROJECT_DIR$/../cnn-text-classification-tf-master/.idea/cnn-text-classification-tf-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ToMuchInfo/code/.idea/code.iml" filepath="$PROJECT_DIR$/../ToMuchInfo/code/.idea/code.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/korean-text-classification-tf.iml" filepath="$PROJECT_DIR$/.idea/korean-text-classification-tf.iml" />
     </modules>
   </component>
