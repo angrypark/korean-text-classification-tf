@@ -6,5 +6,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cnn-text-classification-tf-master" />
     <orderEntry type="module" module-name="code" />
+    <orderEntry type="module" module-name="reaction_model" />
+    <orderEntry type="module" module-name="code" />
+    <orderEntry type="module" module-name="text_classification" />
   </component>
 </module>

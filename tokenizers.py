@@ -69,7 +69,7 @@ class SoyNLPTokenizer(BaseTokenizer):
         self.word_extractor.train(raw_text)
         scores = self.word_extractor.extract()
         scores = [(word, (score.cohesion_forward + score.cohesion_backward) * \
-                   (score.left_branching_entropy + score.right_branching_entropy) for word, score in scores.items())]
+                   (score.left_branching_entropy + score.right_branching_entropy)) for word, score in scores.items()]
         self.scores = scores
         self.tokenizer = MaxScoreTokenizer(scores=self.scores)
 

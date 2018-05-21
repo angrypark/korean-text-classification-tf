@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/.idea/cnn-text-classification-tf-master.iml" filepath="$PROJECT_DIR$/../cnn-text-classification-tf-master/.idea/cnn-text-classification-tf-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ToMuchInfo/code/.idea/code.iml" filepath="$PROJECT_DIR$/../ToMuchInfo/code/.idea/code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ToMuchInfo/code/.idea/code.iml" filepath="$PROJECT_DIR$/../ToMuchInfo/code/.idea/code.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/korean-text-classification-tf.iml" filepath="$PROJECT_DIR$/.idea/korean-text-classification-tf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pingpong-api/reaction_model/.idea/reaction_model.iml" filepath="$PROJECT_DIR$/../pingpong-api/reaction_model/.idea/reaction_model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../text_classification/.idea/text_classification.iml" filepath="$PROJECT_DIR$/../text_classification/.idea/text_classification.iml" />
     </modules>
   </component>
 </project>

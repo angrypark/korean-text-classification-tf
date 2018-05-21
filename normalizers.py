@@ -14,6 +14,17 @@ class BaseNormalizer(ABC):
         normalized_text = raw_text
         return normalized_text
 
+class DummyNormalizer(BaseNormalizer):
+    """
+    A dummy normalizer which does nothing.
+    """
+    def __init__(self, config):
+        pass
+
+    def normalize(self, raw_text):
+        normalized_text = raw_text
+        return normalized_text
+
 
 class BasicNormalizer(BaseNormalizer):
     def __init__(self, config):
@@ -67,3 +78,4 @@ def bad_words_exchanger(raw_text):
         for token in tokens:
             raw_text = raw_text.replace(token, bad_word)
     return raw_text
+

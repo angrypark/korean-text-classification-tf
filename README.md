@@ -1,3 +1,11 @@
 # korean-text-classification-tf
+author : 박성남
 ---
-To improve my programming skills, I wanted to make my own framework and implement various models in it. This is my first framework, whose goal is korean text classification using tensorflow. Thanks for [@dreamgonfly], [@skdy] for giving advice and base line codes. 
+## Objective
+한국어에 다양한 language model들을 실험해보기 위해 만들었습니다. 그 중 text classification 문제입니다.
+
+## Structure
+
+## Models
+
+## How to use
