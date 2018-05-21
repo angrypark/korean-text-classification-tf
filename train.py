@@ -55,13 +55,15 @@ args.add_argument("--log_device_placement", type=bool, default=False)
 args.add_argument("--gpu", type=str, default="all")
 
 config = args.parse_args()
-logger = utils.get_logger("Text Classification")
-logger.info("Arguments : {}".format(config))
+config_str = ""
+for attr, value in config.__dict__.items():
+    config_str += "{}={}".format(attr, value if value else None) + " "
+print(config_str)
 
-def main(_):
+def main():
     # Load model, normalizer and tokenizer
     # ==================================================
-    Model = getattr(models, config.model)
+    Model = eval("{}.{}".format(config.model, config.model))
     Normalizer = getattr(normalizers, config.normalizer)
     Tokenizer = getattr(tokenizers, config.tokenizer)
 
@@ -85,7 +87,7 @@ def main(_):
 
     # Set device setting
     device_config = tf.ConfigProto()
-    device_config.allow_soft_placement = config.allow_soft_placement
+    device_config.allow_soft_placement = config.allow_soft_replacement
     device_config.log_device_placement = config.log_device_placement
     device_config.gpu_options.allow_growth = True
 
@@ -93,7 +95,7 @@ def main(_):
     # ==================================================
     with tf.Session(config=device_config) as sess:
         # Create model
-        num_classes = np.unique(train_labels)
+        num_classes = train_labels.shape[1]
         model = Model(config, num_classes)
 
         # Create Saver
@@ -150,6 +152,8 @@ def main(_):
             os.makedirs(checkpoint_dir)
         saver = tf.train.Saver(tf.global_variables(), max_to_keep=config.num_checkpoints)
 
+        sess.run(tf.global_variables_initializer())
+
         def train_step(x_batch, y_batch):
             """
             A single training step
@@ -204,3 +208,6 @@ def load_pretrained_embedding(shape, pretrained_embed_path, trainable=True):
     with tf.variable_scope("embedding"):
         embedding = tf.get_variable(name='pretrained_embedding',shape=shape, initializer=initializer, trainable=trainable)
     return embedding
+
+if __name__== "__main__":
+    main()
