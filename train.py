@@ -1,14 +1,13 @@
 import tensorflow as tf
 import argparse
-import utils
 import numpy as np
 import os
 import time
 import datetime
 from tensorflow.contrib import learn
 
-from . import tokenizers, normalizers, vectorizers
-from .data_helper import Preprocessor, load_data, split_data, batch_iter
+import tokenizers, normalizers, vectorizers
+from data_helper import Preprocessor, load_data, split_data, batch_iter
 import models
 from models import TextCNN
 

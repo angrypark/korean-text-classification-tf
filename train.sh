@@ -1,0 +1,1 @@
+python3 train.py --mode train --small True --pretrained_embed_dir 
