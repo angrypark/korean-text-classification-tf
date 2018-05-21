@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c18559bd-2393-42a7-a8be-53420e76152a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/framework_test-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/framework_test-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework_test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/framework_test.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/TextCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/TextCNN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../text_classification/a02_TextCNN/data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/../text_classification/a02_TextCNN/data_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../text_classification/a02_TextCNN/p7_TextCNN_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../text_classification/a02_TextCNN/p7_TextCNN_train.py" afterDir="false" />
@@ -92,7 +89,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="data_helpers.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="data_helpers.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/data_helpers.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
@@ -115,10 +112,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/train.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="559">
+                <state relative-caret-position="366">
                   <caret line="138" column="50" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
                   <folding>
                     <element signature="e#24#47#0" expanded="true" />
@@ -154,11 +151,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/train.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1193">
-                  <caret line="212" column="10" lean-forward="true" selection-start-line="212" selection-start-column="10" selection-end-line="212" selection-end-column="10" />
+                <state relative-caret-position="926">
+                  <caret line="155" selection-start-line="155" selection-end-line="155" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -182,7 +179,7 @@
             <entry file="file://$PROJECT_DIR$/models/TextCNN.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="264">
-                  <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+                  <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
@@ -219,14 +216,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="data_helper.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="data_helper.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/data_helper.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-                  <folding>
-                    <element signature="e#24#42#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="34">
+                  <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
                 </state>
               </provider>
             </entry>
@@ -270,8 +264,8 @@
         <option value="$PROJECT_DIR$/../text_classification/a02_TextCNN/p7_TextCNN_train.py" />
         <option value="$PROJECT_DIR$/tokenizers.py" />
         <option value="$PROJECT_DIR$/models/TextCNN.py" />
-        <option value="$PROJECT_DIR$/data_helper.py" />
         <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/data_helper.py" />
       </list>
     </option>
   </component>
@@ -744,6 +738,33 @@
     <entry file="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/eval.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="138" column="50" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
+          <folding>
+            <element signature="e#24#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/TextCNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="926">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/data_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -755,38 +776,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-          <folding>
-            <element signature="e#24#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../cnn-text-classification-tf-master/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="138" column="50" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
-          <folding>
-            <element signature="e#24#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/TextCNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1193">
-          <caret line="212" column="10" lean-forward="true" selection-start-line="212" selection-start-column="10" selection-end-line="212" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>

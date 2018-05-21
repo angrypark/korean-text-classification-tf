@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from tflearn.data_utils import pad_sequences
 
 PAD_ID = 0
 UNK_ID = 1
@@ -41,7 +40,7 @@ def batch_iter(data, batch_size, num_epochs, shuffle=False):
     num_batches_per_epoch = int((data_size-1)/batch_size)+1
     for epoch in range(num_epochs):
         if shuffle:
-            shuffle_indices = np.random.permutate(np.arange(data_size))
+            shuffle_indices = np.random.permutation(np.arange(data_size))
             shuffled_data = data[shuffle_indices]
         else:
             shuffled_data = data
@@ -49,6 +48,50 @@ def batch_iter(data, batch_size, num_epochs, shuffle=False):
             start_idx = batch_num*batch_size
             end_idx = min((batch_num+1)*batch_size, data_size)
             yield shuffled_data[start_idx:end_idx]
+
+def pad_sequences(sequences, maxlen=None, dtype='int32', padding='post',
+                  truncating='post', value=0.):
+    """ pad_sequences.
+    Pad each sequence to the same length: the length of the longest sequence.
+    If maxlen is provided, any sequence longer than maxlen is truncated to
+    maxlen. Truncation happens off either the beginning or the end (default)
+    of the sequence. Supports pre-padding and post-padding (default).
+    Arguments:
+        sequences: list of lists where each element is a sequence.
+        maxlen: int, maximum length.
+        dtype: type to cast the resulting sequence.
+        padding: 'pre' or 'post', pad either before or after each sequence.
+        truncating: 'pre' or 'post', remove values from sequences larger than
+            maxlen either in the beginning or in the end of the sequence
+        value: float, value to pad the sequences to the desired value.
+    Returns:
+        x: `numpy array` with dimensions (number_of_sequences, maxlen)
+    Credits: From Keras `pad_sequences` function.
+    """
+    lengths = [len(s) for s in sequences]
+
+    nb_samples = len(sequences)
+    if maxlen is None:
+        maxlen = np.max(lengths)
+
+    x = (np.ones((nb_samples, maxlen)) * value).astype(dtype)
+    for idx, s in enumerate(sequences):
+        if len(s) == 0:
+            continue  # empty list was found
+        if truncating == 'pre':
+            trunc = s[-maxlen:]
+        elif truncating == 'post':
+            trunc = s[:maxlen]
+        else:
+            raise ValueError("Truncating type '%s' not understood" % padding)
+
+        if padding == 'post':
+            x[idx, :len(trunc)] = trunc
+        elif padding == 'pre':
+            x[idx, -len(trunc):] = trunc
+        else:
+            raise ValueError("Padding type '%s' not understood" % padding)
+    return x
 
 
 class Preprocessor:
@@ -74,7 +117,3 @@ class Preprocessor:
         indexed_tokens, _ = self._preprocess(lines)
         padded_tokens = pad_sequences(indexed_tokens, maxlen=self.max_length)
         return padded_tokens
-
-
-# class Dataset:
-#     def __init__(self, data):
