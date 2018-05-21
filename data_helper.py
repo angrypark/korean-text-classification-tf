@@ -26,8 +26,11 @@ def load_data(train_dir, val_dir, small=False):
 
 def split_data(data):
     lines = [line.split('\t')[0] for line in data]
-    labels = [line.split('\t')[1] for line in data]
-    return lines, labels
+    labels = np.array([int(line.split('\t')[1]) for line in data])
+    num_classes = len(np.unique(labels))
+    labels_one_hot = np.zeros((len(labels), num_classes))
+    labels_one_hot[np.arange(len(labels)), labels] = 1
+    return lines, labels_one_hot
 
 def batch_iter(data, batch_size, num_epochs, shuffle=False):
     """
