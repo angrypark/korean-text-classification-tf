@@ -62,7 +62,7 @@ class TextCNN(object):
         with tf.name_scope("dropout"):
             self.h_drop = tf.nn.dropout(self.h_pool_flat, keep_prob=self.dropout_keep_prob)
 
-        # Final (unnormalized) scores and predictions
+        # Final scores and predictions
         with tf.name_scope("output"):
             W = tf.get_variable("W",
                                 shape=[num_filters_total, num_classes],

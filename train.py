@@ -141,9 +141,9 @@ def main():
         train_summary_writer = tf.summary.FileWriter(train_summary_dir, sess.graph)
 
         # Validation summaries
-        val_summary_op = tf.summary.merge([loss_summary, acc_summary, grad_summaries_merged])
+        val_summary_op = tf.summary.merge([loss_summary, acc_summary])
         val_summary_dir = os.path.join(out_dir, "summaries", "val")
-        val_summary_writed = tf.summary.FileWriter(val_summary_dir, sess.graph)
+        val_summary_writer = tf.summary.FileWriter(val_summary_dir, sess.graph)
 
         # Checkpoint directory
         checkpoint_dir = os.path.abspath(os.path.join(out_dir, "checkpoints"))
@@ -168,7 +168,7 @@ def main():
             print("{}: step {}, loss {:g}, acc {:g}".format(time_str, step, loss, accuracy))
             train_summary_writer.add_summary(summaries, step)
 
-        def val_step(x_batch, y_batch, writer=None):
+        def val_step(x_batch, y_batch):
             """
             Evaluates model on a validation set
             """
@@ -181,8 +181,7 @@ def main():
                                                        feed_dict=feed_dict)
             time_str = datetime.datetime.now().isoformat()
             print("{}: step {}, loss {:g}, acc {:g}".format(time_str, step, loss, accuracy))
-            if writer:
-                writer.add_summary(summaries, step)
+            val_summary_writer.add_summary(summaries, step)
 
         # Generate batches
         batches = batch_iter(list(zip(train_data, train_labels)), config.batch_size, config.num_epochs, config.shuffle)
