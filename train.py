@@ -34,6 +34,7 @@ args.add_argument("--vocab_size", type=int, default=20000)
 
 # Model hyperparameters
 args.add_argument("--embed_dim", type=int, default=128)
+args.add_argument("--learning_rate", type=float, default=1e-3)
 args.add_argument("--min_length", type=int, default=64)
 args.add_argument("--max_length", type=int, default=512)
 args.add_argument("--filter_sizes", type=str, default="3,4,5")
@@ -112,7 +113,7 @@ def main():
 
         # Define training procedure
         global_step = tf.Variable(0, name="global_step", trainable=False)
-        optimizer = tf.train.AdamOptimizer(1e-3)
+        optimizer = tf.train.AdamOptimizer(learning_rate=config.learning_rate)
         grads_and_vars = optimizer.compute_gradients(model.loss)
         train_op = optimizer.apply_gradients(grads_and_vars, global_step=global_step)
 
