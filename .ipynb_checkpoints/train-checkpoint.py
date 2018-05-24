@@ -36,7 +36,6 @@ args.add_argument("--vocab_size", type=int, default=20000)
 args.add_argument("--embed_dim", type=int, default=128)
 args.add_argument("--min_length", type=int, default=64)
 args.add_argument("--max_length", type=int, default=512)
-args.add_argument("--filter_sizes", type=str, default="3,4,5")
 args.add_argument("--num_filters", type=int, default=128)
 args.add_argument("--dropout_keep_prob", type=float, default=0.5)
 args.add_argument("--l2_reg_lambda", type=float, default=0.0)
@@ -55,13 +54,15 @@ args.add_argument("--log_device_placement", type=bool, default=False)
 args.add_argument("--gpu", type=str, default="all")
 
 config = args.parse_args()
-logger = utils.get_logger("Text Classification")
-logger.info("Arguments : {}".format(config))
+config_str = ""
+for attr, value in config.__dict__.items():
+    config_str += "{}={}".format(attr, value if value else None) + " "
+print(config_str)
 
-def main(_):
+def main():
     # Load model, normalizer and tokenizer
     # ==================================================
-    Model = getattr(models, config.model)
+    Model = eval("{}.{}".format(config.model, config.model))
     Normalizer = getattr(normalizers, config.normalizer)
     Tokenizer = getattr(tokenizers, config.tokenizer)
 
@@ -85,7 +86,7 @@ def main(_):
 
     # Set device setting
     device_config = tf.ConfigProto()
-    device_config.allow_soft_placement = config.allow_soft_placement
+    device_config.allow_soft_placement = config.allow_soft_replacement
     device_config.log_device_placement = config.log_device_placement
     device_config.gpu_options.allow_growth = True
 
@@ -93,7 +94,7 @@ def main(_):
     # ==================================================
     with tf.Session(config=device_config) as sess:
         # Create model
-        num_classes = np.unique(train_labels)
+        num_classes = train_labels.shape[1]
         model = Model(config, num_classes)
 
         # Create Saver
@@ -139,9 +140,9 @@ def main(_):
         train_summary_writer = tf.summary.FileWriter(train_summary_dir, sess.graph)
 
         # Validation summaries
-        val_summary_op = tf.summary.merge([loss_summary, acc_summary, grad_summaries_merged])
+        val_summary_op = tf.summary.merge([loss_summary, acc_summary])
         val_summary_dir = os.path.join(out_dir, "summaries", "val")
-        val_summary_writed = tf.summary.FileWriter(val_summary_dir, sess.graph)
+        val_summary_writer = tf.summary.FileWriter(val_summary_dir, sess.graph)
 
         # Checkpoint directory
         checkpoint_dir = os.path.abspath(os.path.join(out_dir, "checkpoints"))
@@ -149,6 +150,8 @@ def main(_):
         if not os.path.exists(checkpoint_dir):
             os.makedirs(checkpoint_dir)
         saver = tf.train.Saver(tf.global_variables(), max_to_keep=config.num_checkpoints)
+
+        sess.run(tf.global_variables_initializer())
 
         def train_step(x_batch, y_batch):
             """
@@ -164,7 +167,7 @@ def main(_):
             print("{}: step {}, loss {:g}, acc {:g}".format(time_str, step, loss, accuracy))
             train_summary_writer.add_summary(summaries, step)
 
-        def val_step(x_batch, y_batch, writer=None):
+        def val_step(x_batch, y_batch):
             """
             Evaluates model on a validation set
             """
@@ -177,8 +180,7 @@ def main(_):
                                                        feed_dict=feed_dict)
             time_str = datetime.datetime.now().isoformat()
             print("{}: step {}, loss {:g}, acc {:g}".format(time_str, step, loss, accuracy))
-            if writer:
-                writer.add_summary(summaries, step)
+            val_summary_writer.add_summary(summaries, step)
 
         # Generate batches
         batches = batch_iter(list(zip(train_data, train_labels)), config.batch_size, config.num_epochs, config.shuffle)
@@ -204,3 +206,6 @@ def load_pretrained_embedding(shape, pretrained_embed_path, trainable=True):
     with tf.variable_scope("embedding"):
         embedding = tf.get_variable(name='pretrained_embedding',shape=shape, initializer=initializer, trainable=trainable)
     return embedding
+
+if __name__== "__main__":
+    main()
