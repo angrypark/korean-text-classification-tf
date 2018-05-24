@@ -1,32 +1,28 @@
 # korean-text-classification-tf
 author : 박성남
 
----
+
 ## Objective
----
 한국어에 다양한 language model들을 tensorflow를 활용하여 실험해보기 위해 만들었습니다. 그 중 text classification 문제입니다.
 
 ## Structure
----
-- `data_helper` : 데이터를 불러오고, batch size에 따라 나눠주고, 정해진 길이의 sequence로 padding하고 전체 전처리를 관리하는 `Preprocessor`가 포함되어 있습니다.
+- `data_helper` : 데이터를 불러오고, batch size에 따라 나눠주고, 정해진 길이의 sequence로 padding하고 전체 전처리를 관리하는 **Preprocessor**가 포함되어 있습니다.
 - `normalizers` : 아주 기본적인 한국어 normalizer입니다. 욕의 변형 형태를 잡아내어 원래 욕으로 바꾸고, 필요없는 문장 기호를 없앱니다.
 - `tokenizers` : 한국어 문장을 token으로 나눠줍니다.
     - `JamoTokenizer` : 문장을 자모 단위로 나눠줍니다.
     - `TwitterTokenizer` : KoNLP의 Twitter 패키지를 활용하여 문장을 tokenize합니다.
-    - `SoyNLPTokenizer` : [SoyNLP]의 `MaxScoreTokenizer`를 활용하여 문장을 tokenize합니다.
+    - `SoyNLPTokenizer` : [SoyNLP](https://github.com/lovit/soynlp)의 MaxScoreTokenizer를 활용하여 문장을 tokenize합니다.
 - `vectorizers` : token을 계산할 수 있는 vector로 바꿔줍니다.
 
 ## Models
----
 - `TextCNN` : Convolutional Neural Networks for Sentence Classification [paper](https://arxiv.org/abs/1408.5882) [github](https://github.com/dennybritz/cnn-text-classification-tf)
 - `VDCNN` : Very Deep Convolutional Networks for Text Classification [paper](https://arxiv.org/abs/1606.01781) [github](https://github.com/zonetrooper32/VDCNN)
 
 ## How to use
----
 ### Task, Data loading 관련 parameter
 |Parameter      |Description                   |Default|
 | ------------- |:-----------------------------:|:-------:|
-| mode      | 지금은 `train` 밖에 없음 | train |
+| mode      | 지금은 train 밖에 없음 | train |
 | small|잘 작동하는지 test용입니다. True이면 500개에 대해서만 돌아감|False|
 | train_dir|모델을 학습할 train_set의 위치|./data/train.txt|
 | val_dir|모델의 성능을 평가할 val_set의 위치|./data/test.txt|
