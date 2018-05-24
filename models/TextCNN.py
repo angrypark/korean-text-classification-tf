@@ -10,8 +10,8 @@ class TextCNN(object):
         self.max_length = config.max_length
         self.vocab_size = config.vocab_size
         self.embed_dim = config.embed_dim
-        self.filter_sizes = [int(x) for x in config.filter_sizes.split(',')]
-        self.num_filters = config.num_filters
+        self.filter_sizes = [3, 4, 5]
+        self.num_filters = 128
         self.l2_reg_lambda = config.l2_reg_lambda
 
         # Placeholders for input, output and dropout
@@ -26,7 +26,6 @@ class TextCNN(object):
         with tf.device("/cpu:0"), tf.name_scope("embedding"):
             self.W = tf.Variable(tf.random_uniform([self.vocab_size, self.embed_dim], -1.0, 1.0), name="W")
             self.embed_chars = tf.nn.embedding_lookup(self.W, self.input_x)
-            # 이건 뭘 하는 거지
             self.embed_chars_expanded = tf.expand_dims(self.embed_chars, -1)
 
         # Create a convolution + maxpool layer for each filter size

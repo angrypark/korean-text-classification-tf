@@ -8,7 +8,6 @@ from tensorflow.contrib import learn
 
 import tokenizers, normalizers, vectorizers
 from data_helper import Preprocessor, load_data, split_data, batch_iter
-import models
 from models import TextCNN
 
 
@@ -37,7 +36,6 @@ args.add_argument("--embed_dim", type=int, default=128)
 args.add_argument("--learning_rate", type=float, default=1e-3)
 args.add_argument("--min_length", type=int, default=64)
 args.add_argument("--max_length", type=int, default=512)
-args.add_argument("--filter_sizes", type=str, default="3,4,5")
 args.add_argument("--num_filters", type=int, default=128)
 args.add_argument("--dropout_keep_prob", type=float, default=0.5)
 args.add_argument("--l2_reg_lambda", type=float, default=0.0)
