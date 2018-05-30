@@ -24,8 +24,8 @@ class BaseTokenizer(ABC):
         pass
 
     @abstractmethod
-    def tokenize(self, raw_text):
-        tokenized_text = [sentence.split() for sentence in raw_text]
+    def tokenize(self, sentence):
+        tokenized_sentence = sentence.split(" ")
         return tokenized_text
 
 
@@ -36,11 +36,22 @@ class JamoTokenizer(BaseTokenizer):
     def __init__(self, config):
         pass
 
-    def tokenize(self, raw_text):
-        tokenized_text = [j2hcj(h2j(sentence)) for sentence in raw_text]
-        return tokenized_text
+    def tokenize(self, sentence):
+        tokenized_sentence = j2hcj(h2j(sentence))
+        return tokenized_sentence
 
 
+class SyllableTokenizer(BaseTokenizer):
+    """
+    Split text into syllables.
+    """
+    def __init__(self, config):
+        pass
+    
+    def tokenize(self, sentence):
+        return sentence
+    
+    
 class TwitterTokenizer(BaseTokenizer):
     """
     Tokenize text using Twitter of KoNLPy
@@ -48,10 +59,10 @@ class TwitterTokenizer(BaseTokenizer):
     def __init__(self, config):
         self.twitter = Twitter()
 
-    def tokenize(self, raw_text, stem=False, norm=False):
-        tokenized_text = [self.twitter.pos(sentence, stem=stem, norm=norm) for sentence in raw_text]
-        tokenized_text = [[token for token, pos in sentence] for sentence in tokenized_text]
-        return tokenized_text
+    def tokenize(self, sentence, stem=False, norm=False):
+        tokenized_sentence = self.twitter.pos(sentence, stem=stem, norm=norm)
+        tokenized_sentence = [token for token, pos in sentence]
+        return tokenized_sentence
 
 
 class SoyNLPTokenizer(BaseTokenizer):
@@ -65,8 +76,8 @@ class SoyNLPTokenizer(BaseTokenizer):
                                             min_cohesion_forward=0.05,
                                             min_right_branching_entropy=0.0)
 
-    def fit(self, raw_text):
-        self.word_extractor.train(raw_text)
+    def fit(self, sentences):
+        self.word_extractor.train(sentences)
         scores = self.word_extractor.extract()
         scores = [(word, (score.cohesion_forward + score.cohesion_backward) * \
                    (score.left_branching_entropy + score.right_branching_entropy)) for word, score in scores.items()]
@@ -80,7 +91,6 @@ class SoyNLPTokenizer(BaseTokenizer):
         self.scores = state_dict['scores']
         self.tokenizer = MaxScoreTokenizer(scores=self.scores)
 
-    def tokenize(self, raw_text):
-        tokenized_text = [self.tokenizer.tokenize(sentence) for sentence in raw_text]
-        return tokenized_text
-
+    def tokenize(self, sentence):
+        tokenized_sentence = self.tokenizer.tokenize(sentence)
+        return tokenized_sentence

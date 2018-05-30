@@ -1,18 +1,22 @@
+from base.base_model import BaseModel
 import tensorflow as tf
 
 
-class TextCNN(object):
-    """
-    A CNN for text classification.
-    Uses an embedding layer, followed by a convolutional, max-pooling and softmax layer.
-    """
-    def __init__(self, config, num_classes):
-        self.max_length = config.max_length
-        self.vocab_size = config.vocab_size
-        self.embed_dim = config.embed_dim
-        self.filter_sizes = [int(x) for x in config.filter_sizes.split(',')]
-        self.num_filters = config.num_filters
-        self.l2_reg_lambda = config.l2_reg_lambda
+class TextCNN(BaseModel):
+    def __init__(self, config):
+        super(TextCNN, self).__init__(config)
+        self.config = config
+        self.build_model()
+        self.init_saver()
+    
+    def build_model(self):
+        # Define model parameters using config
+        self.max_length = self.config.max_length
+        self.vocab_size = self.config.vocab_size
+        self.embed_dim = self.config.embed_dim
+        self.filter_sizes = [3, 4, 5]
+        self.num_filters = 128
+        self.l2_reg_lambda = self.config.l2_reg_lambda
 
         # Placeholders for input, output and dropout
         self.input_x = tf.placeholder(tf.int32, [None, self.max_length], name="input_x")
@@ -26,7 +30,6 @@ class TextCNN(object):
         with tf.device("/cpu:0"), tf.name_scope("embedding"):
             self.W = tf.Variable(tf.random_uniform([self.vocab_size, self.embed_dim], -1.0, 1.0), name="W")
             self.embed_chars = tf.nn.embedding_lookup(self.W, self.input_x)
-            # 이건 뭘 하는 거지
             self.embed_chars_expanded = tf.expand_dims(self.embed_chars, -1)
 
         # Create a convolution + maxpool layer for each filter size
@@ -62,7 +65,7 @@ class TextCNN(object):
         with tf.name_scope("dropout"):
             self.h_drop = tf.nn.dropout(self.h_pool_flat, keep_prob=self.dropout_keep_prob)
 
-        # Final (unnormalized) scores and predictions
+        # Final scores and predictions
         with tf.name_scope("output"):
             W = tf.get_variable("W",
                                 shape=[num_filters_total, num_classes],

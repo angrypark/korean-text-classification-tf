@@ -49,6 +49,7 @@ def batch_iter(data, batch_size, num_epochs, shuffle=False):
             end_idx = min((batch_num+1)*batch_size, data_size)
             yield shuffled_data[start_idx:end_idx]
 
+# from tflearn.data_utils import pad_sequences
 def pad_sequences(sequences, maxlen=None, dtype='int32', padding='post',
                   truncating='post', value=0.):
     """ pad_sequences.

@@ -9,5 +9,7 @@
     <orderEntry type="module" module-name="reaction_model" />
     <orderEntry type="module" module-name="code" />
     <orderEntry type="module" module-name="text_classification" />
+    <orderEntry type="module" module-name="AlphaChu" />
+    <orderEntry type="module" module-name="Tensorflow-Project-Template" />
   </component>
 </module>

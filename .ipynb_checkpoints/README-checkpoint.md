@@ -60,6 +60,7 @@ python3 train.py --mode=train --model=TextCNN --normalizer=BasicNormalizer --tok
 - [Tensorflow-Project-Template](https://github.com/MrGemy95/Tensorflow-Project-Template)를 참고하여 구조 바꾸기
 - Embedding build하는 것 만들기 (Word2Vec, FastText, GloVe)
 - 더 많은 모델 넣기
+- feature extractor 넣기
 - 몇가지 데이터셋에 대해 benchmark 확인
 - evaluation function, loss function 더 많이 구현하고 자동화
 - mode 추가 (infer)
