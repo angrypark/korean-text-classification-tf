@@ -1,6 +1,6 @@
-from base.base_model import BaseModel
 import tensorflow as tf
-
+from base.base_model import BaseModel
+import numpy as np
 
 class TextCNN(BaseModel):
     def __init__(self, config):
@@ -32,6 +32,11 @@ class TextCNN(BaseModel):
             self.W = tf.Variable(tf.random_uniform([self.vocab_size, self.embed_dim], -1.0, 1.0), name="W")
             self.embed_chars = tf.nn.embedding_lookup(self.W, self.input_x)
             self.embed_chars_expanded = tf.expand_dims(self.embed_chars, -1)
+
+        if self.config.pretrained_embed_dir:
+            vocab_list =
+            vector =
+
 
         # Create a convolution + max pool layer for each filter size
         pooled_outputs = list()

@@ -11,9 +11,12 @@ class Vectorizer:
         self.embed_dim = config.embed_dim
         self.idx2word = list()
         self.word2idx = dict()
+        self.pretrained_embed_dir = config.pretrained_embed_dir
 
     def build_vectorizer(self, lines):
         self.word2idx, self.idx2word = self._build_vocab(lines)
+        if self.pretrained_embed_dir:
+            self.load_vector()
 
     def indexer(self, word):
         try:
@@ -35,6 +38,13 @@ class Vectorizer:
         word2idx = {word:idx for idx, word in enumerate(idx2word)}
 
         return word2idx, idx2word
+    
+    def load_vector(self):
+        embedding = dict()
+        with open(self.pretrained_embed_dir, 'rb') as f:
+            for line in f.readlines():
+                word = 
+                embedding[]
 
     def state_dict(self):
         state = {'idx2word' : self.idx2word,

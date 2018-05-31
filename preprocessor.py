@@ -3,19 +3,18 @@ from text import normalizers, tokenizers, vectorizers
 
 
 class Preprocessor:
-    def __init__(self, lines, config):
+    def __init__(self, config):
         self.min_length = config.min_length
         self.max_length = config.max_length
-        
         Normalizer = getattr(normalizers, config.normalizer)
         Tokenizer = getattr(tokenizers, config.tokenizer)
-        
         self.normalizer = Normalizer(config)
         self.tokenizer = Tokenizer(config)
         self.vectorizer = vectorizers.Vectorizer(self.tokenizer, config)
+
+    def build_preprocessor(self, lines):
         self.vectorizer.build_vectorizer(lines)
         self.feature_extractors = list()
-        
 
     def _preprocess(self, sentence):
         normalized_sentence = self.normalizer.normalize(sentence)
@@ -32,7 +31,7 @@ class Preprocessor:
         padded_sentence = pad_sequences([indexed_sentence], maxlen=self.max_length)[0]
         return padded_sentence
 
-    
+
 # from tflearn.data_utils import pad_sequences
 def pad_sequences(sequences, maxlen=None, dtype='int32', padding='post',
                   truncating='post', value=0.):

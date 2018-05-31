@@ -5,7 +5,6 @@ from datetime import datetime
 from data_loader import DataGenerator
 from models import TextCNN
 from trainer import Trainer
-from preprocessor import Preprocessor
 from utils.dirs import create_dirs
 from utils.logger import Logger
 
@@ -64,15 +63,12 @@ def main():
     
     # create tensorflow session
     sess = tf.Session()
-
-    # build preprocessor
-    preprocessor = Preprocessor(config)
-
+    
     # load data, preprocess and generate data
-    data = DataGenerator(preprocessor, config)
-
+    data = DataGenerator(config)
+    
     # create an instance of the model you want
-    model = TextCNN.TextCNN(preprocessor, config)
+    model = TextCNN.TextCNN(config)
     
     # create tensorboard logger
     logger = Logger(sess, config)

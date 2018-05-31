@@ -1,8 +1,7 @@
 import numpy as np
-from preprocessor import Preprocessor
 
 class DataGenerator:
-    def __init__(self, config):
+    def __init__(self, preprocessor, config):
         self.config = config
         train_set, val_set = load_data(config.train_dir, config.val_dir, small=config.small)
         self.train_size = len(train_set)
@@ -13,10 +12,13 @@ class DataGenerator:
         train_lines, train_labels = split_data(train_set)
         val_lines, val_labels = split_data(val_set)
         
-        # preprocess line and make it to a vector
-        self.preprocessor = Preprocessor(train_lines, config)
-        train_data = np.array([self.preprocessor.preprocess(line) for line in train_lines])
-        val_data = np.array([self.preprocessor.preprocess(line) for line in val_lines])
+        # build preprocessor
+        self.preprocessor = preprocessor
+        self.preprocessor.build_preprocessor(train_lines)
+
+        # preprocess line and make it to a list of word indices
+        train_data = np.array([self.preprocessor.preprocess(sentence) for sentence in train_lines])
+        val_data = np.array([self.preprocessor.preprocess(sentence) for sentence in val_lines])
         
         # merge train data and val data
         data = dict()
