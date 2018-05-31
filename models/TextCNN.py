@@ -3,8 +3,9 @@ from base.base_model import BaseModel
 import numpy as np
 
 class TextCNN(BaseModel):
-    def __init__(self, config):
+    def __init__(self, preprocessor, config):
         super(TextCNN, self).__init__(config)
+        self.preprocessor = preprocessor
         self.build_model()
         self.init_saver()
     
@@ -30,13 +31,24 @@ class TextCNN(BaseModel):
         # Embedding layer
         with tf.device("/cpu:0"), tf.name_scope("embedding"):
             self.W = tf.Variable(tf.random_uniform([self.vocab_size, self.embed_dim], -1.0, 1.0), name="W")
+            if self.config.pretrained_embed_dir:
+                print("Load pre-trained embedding from {}".format(self.config.pretrained_embed_dir))
+                vocab2idx = dict()
+                pretrained_embedding = np.load(self.config.pretrained_embed_dir)
+                embedding = list()
+                with open(self.config.vocab_list_dir, 'r') as f:
+                    i = 0
+                    for line in f:
+                        vocab2idx[line] = i
+                for idx, word in enumerate(self.preprocessor.vectorizer.idx2word):
+                    try:
+                        embedding.append(pretrained_embedding[vocab2idx[word]])
+                    except:
+                        embedding.append(np.random.uniform(-1.0,1.0,[self.embed_dim]))
+                embedding = np.stack(embedding)
+                self.W.assign(embedding)
             self.embed_chars = tf.nn.embedding_lookup(self.W, self.input_x)
             self.embed_chars_expanded = tf.expand_dims(self.embed_chars, -1)
-
-        if self.config.pretrained_embed_dir:
-            vocab_list =
-            vector =
-
 
         # Create a convolution + max pool layer for each filter size
         pooled_outputs = list()

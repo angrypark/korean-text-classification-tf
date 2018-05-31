@@ -72,7 +72,7 @@ class SoyNLPTokenizer(BaseTokenizer):
     def __init__(self):
         self.tokenizer = None
         self.scores = list()
-        self.word_extractor = WordExtractor(min_coount=100,
+        self.word_extractor = WordExtractor(min_count=100,
                                             min_cohesion_forward=0.05,
                                             min_right_branching_entropy=0.0)
 

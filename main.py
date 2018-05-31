@@ -24,7 +24,8 @@ args.add_argument("--small", type=bool, default=False)
 # Data loading and saving parameters
 args.add_argument("--train_dir", type=str, default="data/train.txt")
 args.add_argument("--val_dir", type=str, default="data/test.txt")
-args.add_argument("--pretrained_embed_dir", type=str, default="")
+args.add_argument("--pretrained_embed_dir", type=str, default="/home/angrypark/data/fasttext/fasttext.200M.256D.npy")
+args.add_argument("--vocab_list_dir", type=str, default="/home/angrypark/data/fasttext/vocab_list_syllable.txt")
 
 # Model specification
 args.add_argument("--model", type=str, default="TextCNN")
