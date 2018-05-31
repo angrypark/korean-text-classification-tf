@@ -1,4 +1,6 @@
 *.log
 *.ipynb
+*.ipynb_checkpoints
 *.idea
 *.xml
+*__pycache__

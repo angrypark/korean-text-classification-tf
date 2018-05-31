@@ -29,8 +29,6 @@ class Vectorizer:
             counter += self.tokenizer.tokenize(line)
         counter = Counter(counter)
         print("Vocabulary Built. Total number of unique tokens : ", len(counter))
-        for j in counter:
-            print(j)
         idx2word = self.prefix + sorted([word for (word, freq) in counter.most_common(self.vocab_size-4)])
         word2idx = {word:idx for idx, word in enumerate(idx2word)}
         return word2idx, idx2word

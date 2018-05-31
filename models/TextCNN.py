@@ -45,8 +45,11 @@ class TextCNN(BaseModel):
                         embedding.append(pretrained_embedding[vocab2idx[word]])
                     except:
                         embedding.append(np.random.uniform(-1.0,1.0,[self.embed_dim]))
+                for i in range(self.vocab_size - len(embedding)):
+                    embedding.append(np.random.uniform(-1.0,1.0,[self.embed_dim]))
                 embedding = np.stack(embedding)
                 self.W.assign(embedding)
+                
             self.embed_chars = tf.nn.embedding_lookup(self.W, self.input_x)
             self.embed_chars_expanded = tf.expand_dims(self.embed_chars, -1)
 
