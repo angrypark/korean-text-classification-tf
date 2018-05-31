@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c18559bd-2393-42a7-a8be-53420e76152a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../AlphaChu/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/../AlphaChu/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/TextCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/TextCNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text/tokenizers.py" beforeDir="false" afterPath="$PROJECT_DIR$/text/tokenizers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/vectorizers.py" beforeDir="false" afterPath="$PROJECT_DIR$/text/vectorizers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../text_classification/a02_TextCNN/data_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/../text_classification/a02_TextCNN/data_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../text_classification/a02_TextCNN/p7_TextCNN_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../text_classification/a02_TextCNN/p7_TextCNN_train.py" afterDir="false" />
     </list>
@@ -45,8 +42,8 @@
           <file leaf-file-name="vectorizers.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/text/vectorizers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+                <state relative-caret-position="289">
+                  <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
                   <folding>
                     <element signature="e#24#55#0" expanded="true" />
                   </folding>
@@ -73,11 +70,8 @@
           <file leaf-file-name="tokenizers.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/text/tokenizers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="901">
-                  <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
-                  <folding>
-                    <element signature="e#0#27#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="68">
+                  <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -186,6 +180,7 @@
         <option value="$PROJECT_DIR$/models/TextCNN.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/text/tokenizers.py" />
+        <option value="$PROJECT_DIR$/text/vectorizers.py" />
       </list>
     </option>
   </component>
@@ -278,7 +273,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039715" side_tool="true" weight="0.32967034" />
@@ -566,18 +560,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/text/tokenizers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/text/vectorizers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#24#55#0" expanded="true" />
           </folding>
