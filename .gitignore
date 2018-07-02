@@ -9,11 +9,13 @@ samples
 *.tgz
 *.zip
 *.tar.gz
-
+runs/
 
 # Created by https://www.gitignore.io/api/python,vim
 
 ### IPythonNotebook ###
+# *.ipynb
+
 ## Temporary data
 .ipynb_checkpoints/
 
